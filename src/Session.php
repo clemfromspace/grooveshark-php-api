@@ -78,10 +78,11 @@ class Session
     }
 
     /**
-     * Authenticate a user with his credentials.
+     * Authenticate a user using his credentials.
+     * http://developers.grooveshark.com/docs/public_api/v3/#authenticateEx
      *
-     * @param Session $request Required. The Session object to use.
-     * @param Request $request Optional. The Request object to use.
+     * @param string $username Required. Valid username or email.
+     * @param string $password Required. Password.
      */
     public function authenticateCredentials($username, $password)
     {
@@ -99,6 +100,50 @@ class Session
         if (empty($response['result']['UserID'])) {
             throw new Exception\GroovesharkAPIException('Ooops, bad response from Grooveshark. Check the credentials.');
         }
+        return $response['result'];
+    }
+
+    /**
+     * Authenticate a user with an access token.
+     * http://developers.grooveshark.com/docs/public_api/v3/#authenticateToken
+     *
+     * Requires a valid Session ID.
+     *
+     * @param string $token Required. The token.
+     */
+    public function authenticateToken($token)
+    {
+        if (empty($token)
+            throw new Exception\GroovesharkAPIException('You must provide a valid token');
+        }
+
+        $options = array(
+            'token' => $token,
+        );
+
+        $response = $this->request->send('authenticateToken', $options, $this);
+
+        if (empty($response['result']['UserID'])) {
+            throw new Exception\GroovesharkAPIException('Ooops, bad response from Grooveshark. Check the validity of the token.');
+        }
+        return $result;
+    }
+
+    /**
+     * Log out any authenticated user from the current session.
+     * http://developers.grooveshark.com/docs/public_api/v3/#logout
+     *
+     * Requires a valid Session ID.
+     * 
+     */
+    public function logout()
+    {
+        if (!isset($this->sessionId)) {
+            throw new Exception\GroovesharkAPIException('Trying to log out without a valid Session ID');
+        }
+
+        $response = $this->request->send('logout', array(), $this);
+
         return $response['result'];
     }
 
