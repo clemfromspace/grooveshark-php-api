@@ -10,11 +10,11 @@ class Request
      *
      * @param string $method The API method to use.
      * @param array $parameters Optional. Query parameters.
-     * @param array $headers Optional. HTTP headers.
+     * @param Session $session Optional. HTTP headers.
      *
      * @return array
      */
-    public function send($method, $parameters = array(), $session, $resultKey = null)
+    public function send($method, $parameters = array(), $session)
     {
         $payload = array(
             'method' => $method,

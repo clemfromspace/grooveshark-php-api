@@ -15,7 +15,6 @@ class Session
      *
      * @param string $clientKey The client Key.
      * @param string $clientSecret The client secret.
-     * @param string $redirectUri The redirect URI.
      * @param Request $request Optional. The Request object to use.
      *
      * @return void
@@ -33,7 +32,7 @@ class Session
     }
 
     /**
-     * Get the access token.
+     * Get the session id.
      *
      * @return string
      */
