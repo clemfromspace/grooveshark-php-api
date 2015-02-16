@@ -37,5 +37,6 @@ You can now send requests to Grooveshark's API :
 $response = $api->getSongSearchResults('Beat it');
 ```
 
+
 [Grooveshark Api documentation](http://developers.grooveshark.com/docs/public_api/v3/)
 
