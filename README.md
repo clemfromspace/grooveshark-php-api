@@ -11,7 +11,7 @@ PHP 5.3 or greater.
 Using composer:
 ```json
 "require": {
-    "clemfromspace/grooveshark-php-api": "@dev-master"
+    "clemfromspace/grooveshark-php-api": "dev-master"
 }
 ```
 
