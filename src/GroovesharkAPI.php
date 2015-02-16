@@ -3,7 +3,7 @@ namespace GroovesharkAPI;
 
 class GroovesharkAPI
 {
-	private $session = null;
+    private $session = null;
     private $request = null;
 
     /**
