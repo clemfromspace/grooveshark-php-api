@@ -11,7 +11,7 @@ PHP 5.3 or greater.
 Using composer:
 ```json
 "require": {
-    "jwilsson/spotify-web-api-php": "0.7.*"
+    "clemfromspace/grooveshark-php-api": "dev-master"
 }
 ```
 
